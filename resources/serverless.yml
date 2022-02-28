@@ -1,0 +1,30 @@
+service: components-example-resources
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+
+resources:
+  Resources:
+    WorkerQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: workerQueue-${sls:stage}
+        RedrivePolicy:
+          deadLetterTargetArn:
+            Fn::GetAtt:
+              - WorkerDLQ
+              - Arn
+          maxReceiveCount: 5
+    WorkerDLQ:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: workerDlq-${sls:stage}
+
+  Outputs:
+    WorkerQueueArn:
+      Value: !GetAtt WorkerQueue.Arn
+    WorkerQueueUrl:
+      Value: !Ref WorkerQueue
+

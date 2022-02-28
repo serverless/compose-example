@@ -1,0 +1,26 @@
+service: components-example-producer
+
+frameworkVersion: '3'
+
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - sqs:SendMessage
+          Resource:
+            - ${param:workerQueueArn}
+
+functions:
+  producer:
+    handler: handler.producer
+    events:
+      - httpApi:
+          method: GET
+          path: /
+    environment:
+      QUEUE_URL: ${param:workerQueueUrl}

@@ -1,0 +1,15 @@
+service: components-example-consumer
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  consumer:
+    handler: handler.consumer
+    events:
+      - sqs:
+          batchSize: 1
+          arn: ${param:workerQueueArn}
