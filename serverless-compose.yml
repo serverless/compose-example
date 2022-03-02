@@ -1,0 +1,17 @@
+name: components-example
+
+services:
+  resources:
+    path: resources
+
+  producer:
+    path: producer
+    params:
+      workerQueueArn: ${resources.WorkerQueueArn}
+      workerQueueUrl: ${resources.WorkerQueueUrl}
+
+  consumer:
+    path: consumer
+    params:
+      workerQueueArn: ${resources.WorkerQueueArn}
+

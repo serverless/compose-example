@@ -1,43 +1,43 @@
-# Components v4 beta example
+# Serverless Compose example
 
-This example demonstrates how [Components V4 Beta](https://www.npmjs.com/package/@serverless/components-v4-beta) can be used for orchestrating deployments of multiple [Serverless Framework](https://www.serverless.com/framework) services. In this case, there are 3 separate services:
+This example demonstrates how [Serverless Compose](https://www.npmjs.com/package/@serverless/compose) can be used for orchestrating deployments of multiple [Serverless Framework](https://www.serverless.com/framework) services. In this case, there are 3 separate services:
 - `resources`, which provisions SQS queues;
 - `producer`, which provisions a Lambda function that publishes messages to SQS queue;
 - `consumer`, which consumes the messages from a SQS queue;
 
-For more details about Components V4 Beta, please refer to [documentation](https://www.npmjs.com/package/@serverless/components-v4-beta).
+For more details about Serverless Compose, please refer to [documentation](https://www.npmjs.com/package/@serverless/compose).
 
 ## Usage
 
-In order to try it out, make sure you have `components-v4` tool installed:
+In order to try it out, make sure you have `serverless-compose` tool installed:
 
 ```
-npm i -g @serverless/components-v4-beta
+npm i -g @serverless/compose
 ```
 
 
 In order to deploy service, run the following command in service directory:
 
 ```
-components-v4 deploy
+serverless-compose deploy
 ```
 
 In order to remove service, run the following command in service directory:
 
 ```
-components-v4 remove
+serverless-compose remove
 ```
 
 In order to retrieve service outputs, run the following command in service directory:
 
 ```
-components-v4 info
+serverless-compose info
 ```
 
 In order to retrieve logs from services, run the following command in service directory:
 
 ```
-components-v4 logs
+serverless-compose logs
 ```
 
 
