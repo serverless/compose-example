@@ -1,4 +1,4 @@
-name: components-example
+name: serverless-compose-example
 
 services:
   resources:
